@@ -1,0 +1,2 @@
+# pelican-theme
+for blog
