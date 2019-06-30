@@ -14,13 +14,13 @@
 @import url("typogrify.css");
 @import url("fonts.css");
 
-@import "bourbon";
+@import "bourbon/bourbon";
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600);
 
 /***** Global *****/
 /* Body */
 body {
-    background: #F5F4EF;
+    background: #7C756E;
     color: #000305;
     font-size: 87.5%; /* Base font size: 14px */
     /*font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;*/
@@ -55,6 +55,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.1;
     margin-bottom: .8em;
     font-family: 'Yanone Kaffeesatz', arial, serif;
+    color: #333;
 }
 
 h3, h4, h5, h6 { margin-top: .8em; }
@@ -62,21 +63,21 @@ h3, h4, h5, h6 { margin-top: .8em; }
 hr { border: 2px solid #EEEEEE; }
 
 /* Anchors */
-a {outline: 0;}
-a img {border: 0px; text-decoration: none;}
-a:link, a:visited {
-    color: #C74350;
+.main-content a {outline: 0;}
+.main-content a img {border: 0px; text-decoration: none;}
+.main-content a:link, .main-content a:visited {
+    color: #13037d;
     padding: 0 1px;
     text-decoration: underline;
 }
-a:hover, a:active {
-    background-color: #C74350;
+.main-content a:hover, .main-content a:active {
+    background-color: #13037d;
     color: #fff;
     text-decoration: none;
     text-shadow: 1px 1px 1px #333;
 }
 
-h1 a:hover {
+.main-content h1 a:hover {
     background-color: inherit
 }
 
@@ -98,9 +99,6 @@ ol {
     list-style: outside decimal;
     margin: 0em 0 0 1.5em;
 }
-
-li { margin-top: 0.5em;
-     margin-bottom: 1em; }
 
 .post-info {
     float:right;
@@ -162,7 +160,11 @@ aside, nav, article, figure {
 }
 
 /***** Layout *****/
-.body {clear: both; margin: 0 auto; width: 800px;}
+.body {
+    clear: both; 
+    margin: 0 auto; 
+    width: 75%;
+}
 img.right, figure.right {float: right; margin: 0 0 2em 2em;}
 img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 
@@ -177,6 +179,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     background-image: url(../images/ba7fb1e.jpg);
     background-size: 100%;
     background-position: 0% 25%;
+    position: relative;
 }
 
     /* Banner */
@@ -184,16 +187,18 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
         font-size: 3.571em; 
         line-height: 0;
     }
+
     #banner h1 a:link, #banner h1 a:visited {
-        color: #ffffff;
+        color: #fff;
         display: block;
         font-weight: bold;
         margin: 0 0 .6em .2em;
         text-decoration: none;
     }
+
     #banner h1 a:hover, #banner h1 a:active {
         background: none;
-        color: #C74350;
+        color: #d080ff;
         text-shadow: none;
     }
 
@@ -205,7 +210,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 
     /* Main Nav */
     #banner nav {
-        background: #ffffff;
+        background: #fff;
         font-size: 1.143em;
         height: 40px;
         line-height: 30px;
@@ -231,7 +236,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     }
     #banner nav a:hover, #banner nav a:active,
     #banner nav .active a:link, #banner nav .active a:visited {
-        background: #C74451;
+        background: #13037d;
         color: #fff;
         text-shadow: none !important;
     }
@@ -250,11 +255,10 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     Featured
 *****************/
 #featured {
-    background: #fff;
+    background: #B6ADA4;
     margin-bottom: 2em;
     overflow: hidden;
-    padding: 20px;
-    width: 760px;
+    padding: 20px 100px;
 
     border-radius: 10px;
     -moz-border-radius: 10px;
@@ -269,21 +273,20 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 }
 #featured figure img {display: block; float: right;}
 
-#featured h2 {color: #C74451; font-size: 1.714em; margin-bottom: 0.333em;}
+#featured h2 {color: #6b040e; font-size: 1.714em; margin-bottom: 0.333em;}
 #featured h3 {font-size: 1.429em; margin-bottom: .5em;}
 
-#featured h3 a:link, #featured h3 a:visited {color: #000305; text-decoration: none;}
+#featured h3 a:link, #featured h3 a:visited {color: #d080ff; text-decoration: none;}
 #featured h3 a:hover, #featured h3 a:active {color: #fff;}
 
 /*
     Body
 *****************/
 #content {
-    background: #fff;
+    background: #B6ADA4;
     margin-bottom: 2em;
     overflow: hidden;
-    padding: 20px 20px;
-    width: 760px;
+    padding: 20px 100px;
 
     border-radius: 10px;
     -moz-border-radius: 10px;
@@ -293,19 +296,21 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 /*
     Extras
 *****************/
-#extras {margin: 0 auto 3em auto; overflow: hidden;}
+#extras {
+    margin: 0 auto 3em auto; 
+    overflow: hidden;
+}
 
 #extras ul {list-style: none; margin: 0;}
 #extras li {border-bottom: 1px solid #fff;}
 #extras h2 {
-    color: #C74350;
     font-size: 1.429em;
     margin-bottom: .25em;
     padding: 0 3px;
 }
 
 #extras a:link, #extras a:visited {
-    color: #444;
+    color: #13037d;
     display: block;
     border-bottom: 1px solid #F4E3E3;
     text-decoration: none;
@@ -366,7 +371,7 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
     About
 *****************/
 #about {
-    background: #fff;
+    background: #B6ADA4;
     font-style: normal;
     margin-bottom: 2em;
     overflow: hidden;
@@ -383,14 +388,19 @@ img.left, figure.left {float: left; margin: 0 2em 2em 0;}
 #about .primary strong {color: #C64350; display: block; font-size: 1.286em;}
 #about .photo {float: left; margin: 5px 20px;}
 
-#about .url:link, #about .url:visited {text-decoration: none;}
+#about .url:link, #about .url:visited {
+    text-decoration: none;
+}
 
 #about .bio {float: right; width: 500px;}
 
 /*
     Footer
 *****************/
-#contentinfo {padding-bottom: 2em; text-align: right;}
+#contentinfo {
+    padding-bottom: 2em; 
+    text-align: right;
+}
 
 /***** Sections *****/
 /* Blog */
@@ -404,8 +414,13 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 #content > .hentry {padding: 1em 0;}
 .hentry img{display : none ;}
 .entry-title {font-size: 3em; margin-bottom: 10px; margin-top: 0;}
-.entry-title a:link, .entry-title a:visited {text-decoration: none; color: #333;}
-.entry-title a:visited {background-color: #fff;}
+.entry-title a:link, .entry-title a:visited {
+    text-decoration: none; 
+    color: #333;
+}
+.entry-title a:visited {
+    background-color: #fff;
+}
 
 .hentry .post-info * {font-style: normal;}
 
@@ -482,38 +497,34 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 
 
 
-a{
-  text-decoration: none;
-  @include transition(all 0.6s ease);
-  
-  &:hover{
-     @include transition(all 0.6s ease);
-  }
-}
-
 .app{
-  height: 100vh;
+  height: 100%;
 }
 /* -------------
 Sidebar
 ----------------*/
 .sidebar {
-  position: absolute;
-  //width: 33.3333%;
-  width: 17em;
-  height: 100%;
-  top: 0;
+  width: 4em;
+  height: 100vh;
   overflow:hidden;
   background-color: #19222a;
   -webkit-transform: translateZ(0);
   visibility: visible;
   -webkit-backface-visibility: hidden;
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
   
   header{
     background-color: #09f;
-    width: 100%;
+    width: auto;
     display:block;
     padding: 0.75em 1em;
+    text-align: right;
+    color: #fff;
+    cursor: pointer;
   }
 }
 
@@ -522,7 +533,7 @@ Sidebar Nav
 ----------------*/
 .sidebar-nav {
   position: fixed;
-  //width: 13em;
+  width: 100%;
   background-color: #19222a;
   height: 100%;
   font-weight: 400; 
@@ -532,7 +543,13 @@ Sidebar Nav
   z-index: 9;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
- 
+  display: none;
+
+  .sidebar-nav-header {
+        color: #fff;
+        font-size: 0.75em;
+        padding: 1.05em 1em;
+    }
   
   ul{
     list-style:none;
@@ -548,20 +565,28 @@ Sidebar Nav
       width: 100%;
       
       a{
-        color: rgba(255,255,255,0.9);
+        color: #fff;
         font-size: 0.75em;
         padding: 1.05em 1em;
         position: relative;
-        display:block;
-        
+        text-decoration: none;
+
         &:hover{
           background-color: rgba(0,0,0,0.9);
           @include transition(all 0.6s ease);
         }
+
+        .sidebar-cat-num {
+            box-sizing: border-box;
+            border: solid #fff 1px;
+            padding: 1px 10px;
+            margin: auto;
+        }
+
       }
-/* -------------
-Sidebar: icons
-----------------*/
+        /* -------------
+        Sidebar: icons
+        ----------------*/
       i{
         font-size: 1.8em;
         padding-right: 0.5em;
@@ -570,6 +595,10 @@ Sidebar: icons
         vertical-align:middle;
       }  
     }
+      li.active {
+        background-color: rgba(0,0,0,0.9);
+        text-shadow: none !important;
+      }
   }
 
 /* -------------
@@ -612,4 +641,77 @@ Hover
         @include transition(all 0.5s ease);
     }
   }
+}
+
+.container {
+    display: flex;
+}
+
+.item {
+    
+}
+
+.main-content {
+    width: 100%;
+    margin-left: 4em;
+    transition: margin-left .5s;
+}
+
+.menu-container {
+    display: flex;
+}
+
+.menu-item-main {
+    flex-grow: 1;
+}
+
+.menu-item-right {
+    flex-grow: 0;
+}
+
+#banner .banner-photo-credit {
+    color: #fff;
+    font-size: 1em; 
+    font-weight: normal;
+    position: absolute;
+    bottom:3px;
+    right:3px;
+}
+
+#banner .banner-photo-credit a:link {
+    color: #66a2f3;
+    text-decoration: none;
+}
+
+#banner .banner-photo-credit a:visited {
+    color: #d080ff;
+    text-decoration: none;
+}
+
+#banner .banner-photo-credit a:hover,
+#banner .banner-photo-credit a:active {
+    background-color: #13037d;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #333;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
 }

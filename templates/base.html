@@ -13,11 +13,34 @@
         {% block extra_head %}{% endblock extra_head %}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body id="index" class="home">
 {% include 'github.html' %}
-        <header id="banner" class="body">
+        <div class="app container">
+          <aside id="sidebar" class="sidebar">
+              <header id="sidebar-header" onclick="toggleNav()">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </header>
+            <nav id="sidebar-nav" class="sidebar-nav">
+              <div class="sidebar-nav-header">CATEGORIES</div>
+              <ul>
+                {% for cat, cat_articles in categories %}
+                  <li{% if cat == category %} class="active"{% endif %}>
+                    <a href="{{ SITEURL }}/{{ cat.url }}" class="menu-container">
+                      <span class="menu-item-main"><i class="ion-ios-paper-outline"></i>{{ cat }}</span> 
+                      <span class="menu-item-right sidebar-cat-num">{{ cat_articles|length }}</span>
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </nav>
+          </aside>
+          <div id="main-content" class="main-content">
+            <header id="banner" class="body">
                 <h1><a href="{{ SITEURL }}/">{{ SITENAME }} {% if SITESUBTITLE %}<strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
                 <!-- <nav><ul>
                 {% for title, link in MENUITEMS %}
@@ -34,174 +57,65 @@
                 {% endfor %}
                 {% endif %}
                 </ul></nav> -->
-        </header><!-- /#banner -->
-        <section class="app">
-          <aside class="sidebar">
-                 <header>
-                Menu
-              </header>
-            <nav class="sidebar-nav">
-         
-              <ul>
-                <li>
-                  <a href="#"><i class="ion-bag"></i> <span>Shop</span></a>
-        <!--           <ul class="nav-flyout">
-                    <li>
-                      <a href="#"><i class="ion-ios-color-filter-outline"></i>Derps</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-ios-clock-outline"></i>Times</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-android-star-outline"></i>Hates</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-heart-broken"></i>Beat</a>
-                    </li>
-                  </ul> -->
-                </li>
-                <li>
-                  <a href="#"><i class="ion-ios-settings"></i> <span class="">Controls</span></a>
-                  <ul class="nav-flyout">
-                    <li>
-                      <a href="#"><i class="ion-ios-alarm-outline"></i>Watch</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-ios-camera-outline"></i>Creeper</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-ios-chatboxes-outline"></i>Hate</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-ios-cog-outline"></i>Grinder</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#"><i class="ion-ios-briefcase-outline"></i> <span class="">Folio</span></a>
-                  <ul class="nav-flyout">
-                    <li>
-                      <a href="#"><i class="ion-ios-flame-outline"></i>Burn</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-ios-lightbulb-outline"></i>Bulbs</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-ios-location-outline"></i>Where You</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-ios-locked-outline"></i>On Lock</a>
-                    </li>
-                     <li>
-                      <a href="#"><i class="ion-ios-navigate-outline"></i>Ghostface</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#"><i class="ion-ios-analytics-outline"></i> <span class="">Graphicals</span></a>
-                  <ul class="nav-flyout">
-                    <li>
-                      <a href="#"><i class="ion-ios-timer-outline"></i>Timers</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-arrow-graph-down-left"></i>You Lose</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-ios-partlysunny-outline"></i>Stormy</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-ios-timer-outline"></i>Lookie Look</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-ios-game-controller-a-outline"></i>Dork Mfer</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#"><i class="ion-ios-paper-outline"></i> <span class="">Papers</span></a>
-                  <ul class="nav-flyout">
-                    <li>
-                      <a href="#"><i class="ion-ios-filing-outline"></i>File Cab</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-ios-information-outline"></i>Infos</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-ios-paperplane-outline"></i>Planes</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-android-star-outline"></i>Shop</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#"><i class="ion-ios-navigate-outline"></i> <span class="">Ass Finder</span></a>
-                  <ul class="nav-flyout">
-                    <li>
-                      <a href="#"><i class="ion-ios-flame-outline"></i>Burn</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-ios-lightbulb-outline"></i>Bulbs</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-ios-location-outline"></i>Where You</a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="ion-ios-locked-outline"></i>On Lock</a>
-                    </li>
-                     <li>
-                      <a href="#"><i class="ion-ios-navigate-outline"></i>Ghostface</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#"><i class="ion-ios-medical-outline"></i> <span class="">Cocaine</span></a>
-                </li>
-              </ul>
-            </nav>
-          </aside>
-        </section>
-        {% block content %}
-        {% endblock %}
-        <section id="extras" class="body">
-        {% if LINKS %}
-                <div class="blogroll">
-                        <h2>{{ LINKS_WIDGET_NAME | default('links') }}</h2>
-                        <ul>
-                        {% for name, link in LINKS %}
-                            <li><a href="{{ link }}">{{ name }}</a></li>
-                        {% endfor %}
-                        </ul>
-                </div><!-- /.blogroll -->
-        {% endif %}
-        {% if SOCIAL or FEED_ALL_ATOM or FEED_ALL_RSS %}
-                <div class="social">
-                        <h2>{{ SOCIAL_WIDGET_NAME | default('social') }}</h2>
-                        <ul>
-                            {% if FEED_ALL_ATOM %}
-                            <li><a href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                            {% endif %}
-                            {% if FEED_ALL_RSS %}
-                            <li><a href="{{ FEED_DOMAIN }}/{% if FEED_ALL_RSS_URL %}{{ FEED_ALL_RSS_URL }}{% else %}{{ FEED_ALL_RSS }}{% endif %}" type="application/rss+xml" rel="alternate">rss feed</a></li>
-                            {% endif %}
+                <div class="banner-photo-credit">
+                  <i>Photo courtesy of <a href="https://www.reddit.com/user/Iyam_deeanser/">u/Iyam_deeanser</a> (<a href="https://www.reddit.com/r/EarthPorn/comments/bu4ota/antelope_canyons_dragon_eye_oc1334x750/">link</a></i>)
+                </div>
+            </header><!-- /#banner -->
+              {% block content %}
+              {% endblock %}
+            <section id="extras" class="body">
+              {% if LINKS %}
+                    <div class="blogroll">
+                            <h2>{{ LINKS_WIDGET_NAME | default('links') }}</h2>
+                            <ul>
+                            {% for name, link in LINKS %}
+                                <li><a href="{{ link }}">{{ name }}</a></li>
+                            {% endfor %}
+                            </ul>
+                    </div><!-- /.blogroll -->
+              {% endif %}
+              {% if SOCIAL or FEED_ALL_ATOM or FEED_ALL_RSS %}
+                    <div class="social">
+                            <h2>{{ SOCIAL_WIDGET_NAME | default('social') }}</h2>
+                            <ul>
+                                {% if FEED_ALL_ATOM %}
+                                <li><a href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                                {% endif %}
+                                {% if FEED_ALL_RSS %}
+                                <li><a href="{{ FEED_DOMAIN }}/{% if FEED_ALL_RSS_URL %}{{ FEED_ALL_RSS_URL }}{% else %}{{ FEED_ALL_RSS }}{% endif %}" type="application/rss+xml" rel="alternate">rss feed</a></li>
+                                {% endif %}
 
-                        {% for name, link in SOCIAL %}
-                            <li><a href="{{ link }}">{{ name }}</a></li>
-                        {% endfor %}
-                        </ul>
-                </div><!-- /.social -->
-        {% endif %}
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+                            {% for name, link in SOCIAL %}
+                                <li><a href="{{ link }}">{{ name }}</a></li>
+                            {% endfor %}
+                            </ul>
+                    </div><!-- /.social -->
+              {% endif %}
+            </section><!-- /#extras -->
+            <footer id="contentinfo" class="body">
+                  <address id="about" class="vcard body">
+                  Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                  </address><!-- /#about -->
+            </footer><!-- /#contentinfo -->
+          </div>
+        </div>
 
 {% include 'analytics.html' %}
 {% include 'disqus_script.html' %}
+<script>
+  function toggleNav() {
+    document.getElementById("sidebar-header").classList.toggle("change");
+    if (document.getElementById("sidebar").style.width == "17em") {
+      document.getElementById("sidebar-nav").style.display = "none";
+      document.getElementById("sidebar").style.width = "4em";
+      document.getElementById("main-content").style.marginLeft = "4em";
+    }
+    else {
+      document.getElementById("sidebar").style.width = "17em";
+      document.getElementById("main-content").style.marginLeft = "17em";
+      document.getElementById("sidebar-nav").style.display = "block";
+    }
+  }
+</script>
 </body>
 </html>
