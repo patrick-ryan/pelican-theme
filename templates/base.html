@@ -19,6 +19,7 @@
 <body id="index" class="home">
 {% include 'github.html' %}
         <div class="app container">
+          <div id="sidebar-item">
           <aside id="sidebar" class="sidebar">
               <header id="sidebar-header" onclick="toggleNav()">
                 <div class="bar1"></div>
@@ -39,64 +40,67 @@
               </ul>
             </nav>
           </aside>
-          <div id="main-content" class="main-content">
-            <header id="banner" class="body">
-                <h1><a href="{{ SITEURL }}/">{{ SITENAME }} {% if SITESUBTITLE %}<strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
-                <!-- <nav><ul>
-                {% for title, link in MENUITEMS %}
-                    <li><a href="{{ link }}">{{ title }}</a></li>
-                {% endfor %}
-                {% if DISPLAY_PAGES_ON_MENU -%}
-                {% for pg in pages %}
-                    <li{% if pg == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a></li>
-                {% endfor %}
-                {% endif %}
-                {% if DISPLAY_CATEGORIES_ON_MENU -%}
-                {% for cat, null in categories %}
-                    <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
-                {% endfor %}
-                {% endif %}
-                </ul></nav> -->
-                <div class="banner-photo-credit">
-                  <i>Photo courtesy of <a href="https://www.reddit.com/user/Iyam_deeanser/">u/Iyam_deeanser</a> (<a href="https://www.reddit.com/r/EarthPorn/comments/bu4ota/antelope_canyons_dragon_eye_oc1334x750/">link</a></i>)
-                </div>
-            </header><!-- /#banner -->
-              {% block content %}
-              {% endblock %}
-            <section id="extras" class="body">
-              {% if LINKS %}
-                    <div class="blogroll">
-                            <h2>{{ LINKS_WIDGET_NAME | default('links') }}</h2>
-                            <ul>
-                            {% for name, link in LINKS %}
-                                <li><a href="{{ link }}">{{ name }}</a></li>
-                            {% endfor %}
-                            </ul>
-                    </div><!-- /.blogroll -->
-              {% endif %}
-              {% if SOCIAL or FEED_ALL_ATOM or FEED_ALL_RSS %}
-                    <div class="social">
-                            <h2>{{ SOCIAL_WIDGET_NAME | default('social') }}</h2>
-                            <ul>
-                                {% if FEED_ALL_ATOM %}
-                                <li><a href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                                {% endif %}
-                                {% if FEED_ALL_RSS %}
-                                <li><a href="{{ FEED_DOMAIN }}/{% if FEED_ALL_RSS_URL %}{{ FEED_ALL_RSS_URL }}{% else %}{{ FEED_ALL_RSS }}{% endif %}" type="application/rss+xml" rel="alternate">rss feed</a></li>
-                                {% endif %}
+          </div>
+          <div id="main-content">
+              <header id="banner" class="body">
+                  <h1><a href="{{ SITEURL }}/">{{ SITENAME }}{% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
+                  <!-- <nav><ul>
+                  {% for title, link in MENUITEMS %}
+                      <li><a href="{{ link }}">{{ title }}</a></li>
+                  {% endfor %}
+                  {% if DISPLAY_PAGES_ON_MENU -%}
+                  {% for pg in pages %}
+                      <li{% if pg == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a></li>
+                  {% endfor %}
+                  {% endif %}
+                  {% if DISPLAY_CATEGORIES_ON_MENU -%}
+                  {% for cat, null in categories %}
+                      <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+                  {% endfor %}
+                  {% endif %}
+                  </ul></nav> -->
+                  <div class="banner-photo-credit">
+                    <i>Photo courtesy of <a href="https://www.reddit.com/user/Iyam_deeanser/">u/Iyam_deeanser</a> (<a href="https://www.reddit.com/r/EarthPorn/comments/bu4ota/antelope_canyons_dragon_eye_oc1334x750/">link</a></i>)
+                  </div>
+              </header><!-- /#banner -->
+              <section id="main-content-body">
+                  {% block content %}
+                  {% endblock %}
+                <section id="extras" class="body">
+                  {% if LINKS %}
+                        <div class="blogroll">
+                                <h2>{{ LINKS_WIDGET_NAME | default('links') }}</h2>
+                                <ul>
+                                {% for name, link in LINKS %}
+                                    <li><a href="{{ link }}">{{ name }}</a></li>
+                                {% endfor %}
+                                </ul>
+                        </div><!-- /.blogroll -->
+                  {% endif %}
+                  {% if SOCIAL or FEED_ALL_ATOM or FEED_ALL_RSS %}
+                        <div class="social">
+                                <h2>{{ SOCIAL_WIDGET_NAME | default('social') }}</h2>
+                                <ul>
+                                    {% if FEED_ALL_ATOM %}
+                                    <li><a href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                                    {% endif %}
+                                    {% if FEED_ALL_RSS %}
+                                    <li><a href="{{ FEED_DOMAIN }}/{% if FEED_ALL_RSS_URL %}{{ FEED_ALL_RSS_URL }}{% else %}{{ FEED_ALL_RSS }}{% endif %}" type="application/rss+xml" rel="alternate">rss feed</a></li>
+                                    {% endif %}
 
-                            {% for name, link in SOCIAL %}
-                                <li><a href="{{ link }}">{{ name }}</a></li>
-                            {% endfor %}
-                            </ul>
-                    </div><!-- /.social -->
-              {% endif %}
-            </section><!-- /#extras -->
-            <footer id="contentinfo" class="body">
-                  <address id="about" class="vcard body">
-                  Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                  </address><!-- /#about -->
-            </footer><!-- /#contentinfo -->
+                                {% for name, link in SOCIAL %}
+                                    <li><a href="{{ link }}">{{ name }}</a></li>
+                                {% endfor %}
+                                </ul>
+                        </div><!-- /.social -->
+                  {% endif %}
+                </section><!-- /#extras -->
+              </section>
+              <footer id="contentinfo" class="body">
+                    <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                    </address><!-- /#about -->
+              </footer><!-- /#contentinfo -->
           </div>
         </div>
 
@@ -108,11 +112,11 @@
     if (document.getElementById("sidebar").style.width == "17em") {
       document.getElementById("sidebar-nav").style.display = "none";
       document.getElementById("sidebar").style.width = "4em";
-      document.getElementById("main-content").style.marginLeft = "4em";
+      document.getElementById("main-content").style.marginLeft = null;
     }
     else {
       document.getElementById("sidebar").style.width = "17em";
-      document.getElementById("main-content").style.marginLeft = "17em";
+      document.getElementById("main-content").style.marginLeft = "13em";
       document.getElementById("sidebar-nav").style.display = "block";
     }
   }
